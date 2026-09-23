@@ -1,6 +1,6 @@
 {
   "name": "wasp-nest-core",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "The Wasp Nest core: shared Drones and Stingers, orchestration commands, rules, and hooks. Install this first; specialist packs are add-ons.",
   "license": "AGPL-3.0-or-later",
   "skills": [
@@ -102,6 +102,13 @@
     "./skills/shadcn-svelte-stinger",
     "./skills/slack-app-stinger",
     "./skills/social-media-marketing-organic-stinger",
+    "./skills/source-command-drift-audit",
+    "./skills/source-command-forge",
+    "./skills/source-command-pest-controller",
+    "./skills/source-command-re-research",
+    "./skills/source-command-register",
+    "./skills/source-command-ship-gate",
+    "./skills/source-command-smoke-it",
     "./skills/status-page-stinger",
     "./skills/svelte-stinger",
     "./skills/swarm-audit-stinger",

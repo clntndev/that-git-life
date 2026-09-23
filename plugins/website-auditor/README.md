@@ -5,7 +5,7 @@
 ### Turn a domain into a scored, evidenced, board-ready audit in one run.
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-14213D?style=flat-square)](./LICENSE)
-[![Version](https://img.shields.io/badge/version-0.1.0-2F6FED?style=flat-square)](./.claude-plugin/plugin.json)
+[![Version](https://img.shields.io/badge/version-0.1.1-2F6FED?style=flat-square)](./.claude-plugin/plugin.json)
 [![Harnesses](https://img.shields.io/badge/harnesses-Claude%20Code%20%7C%20Cursor%20%7C%20Codex%20%7C%20Cowork-2F6FED?style=flat-square)](#harness-support)
 [![Drone%2FStinger pairs](https://img.shields.io/badge/Drone%2FStinger%20pairs-20-14213D?style=flat-square)](#the-drone-army-roster)
 

@@ -1,6 +1,6 @@
 {
   "name": "webapp-capture-scripts",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": true,
   "description": "Capture scripts for the webapp-capture skill. Designed by Legion Code Inc.",
   "type": "module",

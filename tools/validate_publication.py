@@ -127,6 +127,44 @@ def catalog_errors(root: Path) -> list[str]:
     return errors
 
 
+def codex_plugin_errors(root: Path) -> list[str]:
+    marketplace_path = root / ".agents" / "plugins" / "marketplace.json"
+    if not marketplace_path.is_file():
+        return ["Codex marketplace is missing"]
+    marketplace = json.loads(marketplace_path.read_text(encoding="utf-8"))
+    errors = []
+    for entry in marketplace.get("plugins", []):
+        name = entry["name"]
+        plugin = root / "plugins" / name
+        manifest_path = plugin / ".codex-plugin" / "plugin.json"
+        if not manifest_path.is_file():
+            errors.append(f"Codex plugin manifest is missing: {name}")
+            continue
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        if manifest.get("name") != name:
+            errors.append(f"Codex marketplace and plugin names differ: {name}")
+        if manifest.get("skills") != "./skills/":
+            errors.append(f"Codex skills path is invalid: {name}")
+        source_agents = list((plugin / "agents").glob("*-wasp-drone.md"))
+        codex_agents = list((plugin / "codex-agents").glob("*-wasp-drone.toml"))
+        if len(source_agents) != len(codex_agents):
+            errors.append(f"Codex native agent registrations differ from Drones: {name}")
+        if source_agents:
+            hook_path = plugin / "hooks" / "hooks.json"
+            if not hook_path.is_file() or not (plugin / "hooks" / "register-codex-agents.py").is_file():
+                errors.append(f"Codex native agent registration hook is missing: {name}")
+            elif "register-codex-agents.py" not in hook_path.read_text(encoding="utf-8"):
+                errors.append(f"Codex native agent registration hook is unwired: {name}")
+    commands = root / "plugins" / "wasp-nest-core" / "skills"
+    expected = {f"source-command-{name}" for name in (
+        "pest-controller", "smoke-it", "forge", "register", "drift-audit", "re-research", "ship-gate"
+    )}
+    actual = {path.parent.name for path in commands.glob("source-command-*/SKILL.md")}
+    if actual != expected:
+        errors.append(f"Codex command wrappers differ: missing={sorted(expected - actual)}, extra={sorted(actual - expected)}")
+    return errors
+
+
 def core_learning_errors(root: Path) -> list[str]:
     public_learn = root / "learn"
     core_learn = root / "plugins" / "wasp-nest-core" / "learn"
@@ -185,6 +223,7 @@ def validate(root: Path) -> list[str]:
         if not (root / "learn" / relative).is_file():
             errors.append(f"public learning page is missing: {relative}")
     errors.extend(catalog_errors(root))
+    errors.extend(codex_plugin_errors(root))
     errors.extend(core_learning_errors(root))
     errors.extend(instruction_template_errors(root))
     errors.extend(manifest_errors(root))

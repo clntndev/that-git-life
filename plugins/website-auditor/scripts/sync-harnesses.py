@@ -207,10 +207,8 @@ def generate_cursor_plugin_manifest(manifest, skills, agents, commands):
 
 
 def generate_codex_plugin_manifest(manifest, skills):
-    """.codex-plugin/plugin.json. Codex has no documented file-based agent format (research gap
-    flagged in harness-support-matrix.md), so agents are intentionally NOT listed here: on Codex
-    this plugin surfaces only through its skills, matching that documented gap rather than papering
-    over it with an invented config shape."""
+    """Standalone source manifest. The built Wasp Nest marketplace adds the trusted
+    SessionStart hook that registers generated Codex agent TOMLs from codex-agents/."""
     return {
         "name": manifest["name"],
         "version": manifest.get("version", "0.0.0"),
@@ -221,12 +219,6 @@ def generate_codex_plugin_manifest(manifest, skills):
         "license": manifest.get("license", ""),
         "keywords": manifest.get("keywords", []),
         "skills": [f"skills/{name}" for name, _ in skills],
-        "_codex_agent_gap_note": (
-            "Codex has no documented file-based subagent-definition format as of this plugin's "
-            "research window (only agents.<role> config.toml keys pointing at an undocumented "
-            "config_file shape). This plugin's 20 Drones are therefore not listed here; on Codex, "
-            "reach this plugin's capability through its skills only, per harness-support-matrix.md."
-        ),
     }
 
 

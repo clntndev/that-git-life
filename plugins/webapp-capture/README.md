@@ -1,6 +1,6 @@
 # Webapp Capture
 
-**Designed and built by [Legion Code Inc.](https://www.legioncodeinc.com)** Version 1.1.0. Licensed under AGPL-3.0-or-later.
+**Designed and built by [Legion Code Inc.](https://www.legioncodeinc.com)** Version 1.1.1. Licensed under AGPL-3.0-or-later.
 
 Wasp Nest pack imported from `app-auditor-plugin-claude` at commit `8528c4a`. The donor checkout was not modified. Third-party dependencies and archived source captures retain their own rights; see [third-party notices](THIRD-PARTY-NOTICES.md).
 
