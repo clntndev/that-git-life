@@ -186,7 +186,6 @@ def generate_agents() -> None:
     codex_agents = CODEX / "agents"
     repository_agents = AGENTS / "agents"
     agents = sorted((CLAUDE / "agents").glob("*.md"))
-    native_codex_agents = sorted((CLAUDE / "agents").glob("*.toml"))
 
     def populate_markdown_agents(target: Path, harness: str) -> None:
         for path in agents:
@@ -205,21 +204,10 @@ def generate_agents() -> None:
     replace_generated_directory(repository_agents, populate_repository_agents)
 
     def populate_codex_agents(target: Path) -> None:
-        generated_names = {f"{path.stem}.toml" for path in agents}
         for path in agents:
             (target / f"{path.stem}.toml").write_text(
                 codex_agent_text(path), encoding="utf-8"
             )
-        for path in native_codex_agents:
-            if path.name in generated_names:
-                raise ValueError(
-                    f"Native Codex agent conflicts with generated agent: {path.name}"
-                )
-            require_plain_template_path(path, "native Codex agent source")
-            text = path.read_text(encoding="utf-8").replace(
-                "../skills/", ".agents/skills/"
-            )
-            (target / path.name).write_text(text, encoding="utf-8")
 
     replace_generated_directory(codex_agents, populate_codex_agents)
 
@@ -421,14 +409,13 @@ def generate_source_templates() -> None:
 
 def generate_catalog() -> None:
     agents = sorted((CLAUDE / "agents").glob("*.md"))
-    native_codex_agents = sorted((CLAUDE / "agents").glob("*.toml"))
     skills = sorted(
         path
         for path in (CLAUDE / "skills").iterdir()
         if path.is_dir() and (path / "SKILL.md").is_file()
     )
     commands = sorted((CLAUDE / "commands").glob("*.md"))
-    agent_count = len(agents) + len(native_codex_agents)
+    agent_count = len(agents)
     core_skill_count = len(skills)
     command_count = len(commands)
     command_translation_count = len(CODEX_COMMAND_TRANSLATIONS)
@@ -443,21 +430,11 @@ def generate_catalog() -> None:
         rows.append(
             f"| [{bee}](../src/agents/{agent.name}) | "
             f"[{expected}](../src/skills/{expected}/) | "
-            f"`.codex/agents/{agent.stem}.toml` (generated) |"
+            f"[TOML](../.codex/agents/{agent.stem}.toml) |"
         )
-    for agent in native_codex_agents:
-        bee = agent.stem
-        expected = bee.removesuffix("-worker-bee") + "-stinger"
-        rows.append(
-            f"| [{bee}](../src/agents/{agent.name}) | "
-            f"[{expected}](../src/skills/{expected}/) | "
-            "Native TOML source; skill paths adapted on generation |"
-        )
-    paired_skills = {
-        agent.stem.removesuffix("-worker-bee") + "-stinger"
-        for agent in (*agents, *native_codex_agents)
-    }
-    utilities = sorted(skill_names - paired_skills)
+    utilities = sorted(skill_names - {
+        agent.stem.removesuffix("-worker-bee") + "-stinger" for agent in agents
+    })
     text = "\n".join([
         "# Asset Catalog",
         "",
@@ -465,11 +442,7 @@ def generate_catalog() -> None:
         "",
         "## Exact manifest",
         "",
-        (
-            f"- Agents: {agent_count} "
-            f"({len(agents)} portable Markdown plus "
-            f"{len(native_codex_agents)} Codex-native TOML)"
-        ),
+        f"- Agents: {agent_count}",
         f"- Core skills: {core_skill_count}",
         (
             f"- Commands: {command_count} "
@@ -487,12 +460,7 @@ def generate_catalog() -> None:
         "",
         "| Source capability | Claude Code | Codex | Cursor |",
         "|---|---|---|---|",
-        (
-            f"| {agent_count} agents | PRESERVE {len(agents)} portable Markdown agents | "
-            f"TRANSLATE {len(agents)} Markdown agents; PRESERVE "
-            f"{len(native_codex_agents)} native TOML agent | "
-            f"PRESERVE {len(agents)} portable Markdown agents |"
-        ),
+        f"| {agent_count} agents | PRESERVE as Markdown | TRANSLATE to TOML project agents | PRESERVE as Markdown |",
         f"| {core_skill_count} skills | PRESERVE | PRESERVE in `.agents/skills` and plugin | PRESERVE |",
         f"| {command_count} commands | PRESERVE | TRANSLATE {command_translation_count} to explicit skills in both Codex layers | PRESERVE |",
         "| 4 rules | TRANSLATE to Claude rules and CLAUDE.md | TRANSLATE to project instructions | PRESERVE as MDC |",
