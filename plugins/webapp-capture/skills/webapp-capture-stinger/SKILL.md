@@ -10,7 +10,7 @@ metadata:
   hive-drone: webapp-capture-wasp-drone
   pair-drone: webapp-capture-wasp-drone
   domain: web app capture
-  version: 1.1.0
+  version: 1.1.1
 ---
 
 # Webapp Capture Stinger
