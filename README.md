@@ -7,7 +7,7 @@
 
 ### Get the Git life.
 
-**139 specialist Drones, 176 Stingers, commands, hooks, and rules across 6 installable plugins.**
+**139 specialist Drones, 183 Stingers, commands, hooks, and rules across 6 installable plugins.**
 
 Give your coding assistant the people, playbooks, and project memory it needs to build.
 
@@ -44,9 +44,10 @@ In a terminal with Codex installed, add the same marketplace and select the core
 
 ```bash
 codex plugin marketplace add legioncodeinc/vibe-coding-tools
+codex plugin add wasp-nest-core@wasp-nest
 ```
 
-You should then see **The Wasp Nest** and its individually installable packs. Choose only the packs your work needs. Claude plugin skills use the plugin name as their namespace, such as `/wasp-nest-core:get-started-stinger`; Codex presents installed skills through its plugin surface. Harness capabilities differ, so consult [the compatibility guide](learn/reference/HARNESS-CAPABILITIES.md) for Cursor and Cowork too.
+You should then see **The Wasp Nest** and its individually installable packs. Choose only the packs your work needs. Claude plugin skills use the plugin name as their namespace, such as `/wasp-nest-core:get-started-stinger`; Codex presents installed skills and all seven command-wrapper skills through its plugin surface. For native Codex Drone roles, review and trust the plugin's hooks with `/hooks`, then start a new local session. [The compatibility guide](learn/reference/HARNESS-CAPABILITIES.md) explains the trust step and the other harnesses.
 
 Open the repository you want to work on and ask:
 
@@ -146,16 +147,16 @@ The Drone and Stinger pairing is enforced by the source validator. A missing pai
 
 ## What ships
 
-Marketplace release **v2.0.0**. The core and add-on packs have independent manifest versions; counts and descriptions below are read from the built plugins, not maintained by hand.
+Marketplace release **v2.0.1**. The core and add-on packs have independent manifest versions; counts and descriptions below are read from the built plugins, not maintained by hand.
 
 | Plugin | Version | Stingers | Drones | What it does |
 | --- | --- | ---: | ---: | --- |
-| [wasp-nest-core](plugins/wasp-nest-core/README.md) | 2.0.0 | 119 | 115 | The Wasp Nest core: shared Drones and Stingers, orchestration commands, rules, and hooks. |
+| [wasp-nest-core](plugins/wasp-nest-core/README.md) | 2.0.1 | 126 | 115 | The Wasp Nest core: shared Drones and Stingers, orchestration commands, rules, and hooks. |
 | [content-intelligence](plugins/content-intelligence/README.md) | 0.1.0 | 2 | 0 | Research current GitHub repository trends and news, verify one story, and prepare evidence-backed social post drafts. |
-| [highlevel](plugins/highlevel/README.md) | 0.1.0 | 3 | 3 | HighLevel integration, AI Studio creation, and offline workflow-export visualization, with a dedicated Drone and Stinger for each domain. |
+| [highlevel](plugins/highlevel/README.md) | 0.1.1 | 3 | 3 | HighLevel integration, AI Studio creation, and offline workflow-export visualization, with a dedicated Drone and Stinger for each domain. |
 | [littlebird-toolkit](plugins/littlebird-toolkit/README.md) | 2.0.0 | 30 | 0 | Thirty skills that turn your Littlebird memory into work you can act on. |
-| [webapp-capture](plugins/webapp-capture/README.md) | 1.1.0 | 1 | 1 | Capture any live web app the way users see it: demo videos with screenshots, captions, and scripts; a full UI component library with measured styles and DTCG design tokens; a Claude Design handoff zip; a shadcn/ui migration map; and visual and code inconsistency audits. |
-| [website-auditor](plugins/website-auditor/README.md) | 0.1.0 | 21 | 20 | Repeatable, harness-portable website audit tool: AEO/SEO, security, UX/funnel, accessibility, and analytics assessment for any site, with a branded XLSX scorecard and customer/auditor reports. |
+| [webapp-capture](plugins/webapp-capture/README.md) | 1.1.1 | 1 | 1 | Capture any live web app the way users see it: demo videos with screenshots, captions, and scripts; a full UI component library with measured styles and DTCG design tokens; a Claude Design handoff zip; a shadcn/ui migration map; and visual and code inconsistency audits. |
+| [website-auditor](plugins/website-auditor/README.md) | 0.1.1 | 21 | 20 | Repeatable, harness-portable website audit tool: AEO/SEO, security, UX/funnel, accessibility, and analytics assessment for any site, with a branded XLSX scorecard and customer/auditor reports. |
 
 The [Claude catalog](.claude-plugin/marketplace.json) and [Codex catalog](.agents/plugins/marketplace.json) expose these packs individually. Runtime guides and research distillations ship with them. Raw research archives, `node_modules/`, and ingested photography models do not. The photography pack retains only its blank model template.
 

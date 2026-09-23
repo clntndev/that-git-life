@@ -1,6 +1,6 @@
 # Get started with The Wasp Nest
 
-This is the public marketplace installation path. You do not need access to the private source repository or its `install.sh` script. Installation adds plugin components; home instruction files and a project Library are separate, consent-based steps.
+This guide installs The Wasp Nest from the public marketplace. You do not need access to the private source repository or its `install.sh` script. Installation adds plugin components; home instruction files and a project Library are separate, consent-based steps. For native Codex Drone roles, have Python 3 available and be ready to review the plugin hooks.
 
 ## Install core
 
@@ -15,9 +15,12 @@ In a terminal with Codex installed, add the marketplace, then select **The Wasp 
 
 ```bash
 codex plugin marketplace add legioncodeinc/vibe-coding-tools
+codex plugin add wasp-nest-core@wasp-nest
 ```
 
-The [public README](../../README.md#what-ships) lists optional packs. Install the `highlevel` pack only when you need HighLevel API, AI Studio, or workflow-export work, for example. A pack contains its own Stingers and, where applicable, Drones. [Harness Capabilities](../reference/HARNESS-CAPABILITIES.md) explains why a Claude command may appear as a Stinger workflow in Codex or another harness.
+The [public README](../../README.md#what-ships) lists optional packs. Install the `highlevel` pack only when you need HighLevel API, AI Studio, or workflow-export work, for example. A pack contains its own Stingers and, where applicable, Drones.
+
+In Codex, open `/hooks`, review and trust the installed plugin hooks, then start a new local session. That first trusted session registers the pack's native Drone roles under `$CODEX_HOME/agents` (normally `~/.codex/agents`). If a same-name definition has changed, it is backed up before replacement. Without hook trust, the Stingers still install but the native roles do not. [Harness Capabilities](../reference/HARNESS-CAPABILITIES.md) explains why a Claude command appears as a wrapper skill in Codex.
 
 ## Decide whether to set up your home
 

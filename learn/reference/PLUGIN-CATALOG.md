@@ -1,10 +1,10 @@
 # Plugin catalog
 
-Generated from the built Wasp Nest v2.0.0 plugins. This is the complete shipped roster; the [README](../../README.md#what-ships) is the short install guide.
+Generated from the built Wasp Nest v2.0.1 plugins. This is the complete shipped roster; the [README](../../README.md#what-ships) is the short install guide.
 
 ## wasp-nest-core
 
-Version `2.0.0`. 119 Stingers, 115 Drones. [Pack overview](../../plugins/wasp-nest-core/README.md).
+Version `2.0.1`. 126 Stingers, 115 Drones. [Pack overview](../../plugins/wasp-nest-core/README.md).
 
 ### Stingers
 
@@ -106,6 +106,13 @@ Version `2.0.0`. 119 Stingers, 115 Drones. [Pack overview](../../plugins/wasp-ne
 - [shadcn-svelte-stinger](../../plugins/wasp-nest-core/skills/shadcn-svelte-stinger/SKILL.md)
 - [slack-app-stinger](../../plugins/wasp-nest-core/skills/slack-app-stinger/SKILL.md)
 - [social-media-marketing-organic-stinger](../../plugins/wasp-nest-core/skills/social-media-marketing-organic-stinger/SKILL.md)
+- [source-command-drift-audit](../../plugins/wasp-nest-core/skills/source-command-drift-audit/SKILL.md)
+- [source-command-forge](../../plugins/wasp-nest-core/skills/source-command-forge/SKILL.md)
+- [source-command-pest-controller](../../plugins/wasp-nest-core/skills/source-command-pest-controller/SKILL.md)
+- [source-command-re-research](../../plugins/wasp-nest-core/skills/source-command-re-research/SKILL.md)
+- [source-command-register](../../plugins/wasp-nest-core/skills/source-command-register/SKILL.md)
+- [source-command-ship-gate](../../plugins/wasp-nest-core/skills/source-command-ship-gate/SKILL.md)
+- [source-command-smoke-it](../../plugins/wasp-nest-core/skills/source-command-smoke-it/SKILL.md)
 - [status-page-stinger](../../plugins/wasp-nest-core/skills/status-page-stinger/SKILL.md)
 - [svelte-stinger](../../plugins/wasp-nest-core/skills/svelte-stinger/SKILL.md)
 - [swarm-audit-stinger](../../plugins/wasp-nest-core/skills/swarm-audit-stinger/SKILL.md)
@@ -257,7 +264,7 @@ Version `0.1.0`. 2 Stingers, 0 Drones. [Pack overview](../../plugins/content-int
 
 ## highlevel
 
-Version `0.1.0`. 3 Stingers, 3 Drones. [Pack overview](../../plugins/highlevel/README.md).
+Version `0.1.1`. 3 Stingers, 3 Drones. [Pack overview](../../plugins/highlevel/README.md).
 
 ### Stingers
 
@@ -310,7 +317,7 @@ Version `2.0.0`. 30 Stingers, 0 Drones. [Pack overview](../../plugins/littlebird
 
 ## webapp-capture
 
-Version `1.1.0`. 1 Stingers, 1 Drones. [Pack overview](../../plugins/webapp-capture/README.md).
+Version `1.1.1`. 1 Stingers, 1 Drones. [Pack overview](../../plugins/webapp-capture/README.md).
 
 ### Stingers
 
@@ -322,7 +329,7 @@ Version `1.1.0`. 1 Stingers, 1 Drones. [Pack overview](../../plugins/webapp-capt
 
 ## website-auditor
 
-Version `0.1.0`. 21 Stingers, 20 Drones. [Pack overview](../../plugins/website-auditor/README.md).
+Version `0.1.1`. 21 Stingers, 20 Drones. [Pack overview](../../plugins/website-auditor/README.md).
 
 ### Stingers
 

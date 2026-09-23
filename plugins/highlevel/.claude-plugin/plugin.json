@@ -1,6 +1,6 @@
 {
   "name": "highlevel",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "HighLevel integration, AI Studio creation, and offline workflow-export visualization, with a dedicated Drone and Stinger for each domain.",
   "author": {
     "name": "Legion Code Inc."
